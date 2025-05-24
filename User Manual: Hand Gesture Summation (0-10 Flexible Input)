@@ -1,0 +1,111 @@
+User Manual: Hand Gesture Summation (0-10 Flexible Input)
+This program allows you to perform basic addition using hand gestures recognized by your webcam. You can input numbers from 1 to 10 by showing fingers on one or two hands.
+
+1. Program Overview
+The program operates in different states:
+
+Waiting for First Number: The program is ready to receive your first number.
+First Number Captured: Your first number has been recognized and locked in. The program is now waiting for the second number.
+Second Number Captured & Sum Displayed: Your second number has been recognized, and the sum is displayed.
+Reset: The calculation is cleared, and the program returns to the "Waiting for First Number" state.
+2. How to Perform Gestures (1-10)
+The program counts the total number of extended fingers across all detected hands.
+
+Numbers 1 to 5 (One Hand):
+
+Show the corresponding number of fingers on a single hand. Ensure your fingers are clearly extended and separated.
+Examples:
+1: Index finger extended, others closed.
+2: Index and middle fingers extended, others closed.
+3: Thumb, index, and middle fingers extended OR index, middle, and ring fingers extended.
+4: Four fingers extended (excluding thumb).
+5: All five fingers extended (open palm).
+Numbers 6 to 10 (Two Hands):
+
+Combine fingers across both hands to reach the desired number.
+Examples:
+6: One hand showing 5 (open palm) + the other hand showing 1 (index finger).
+7: One hand showing 5 + the other hand showing 2.
+8: One hand showing 5 + the other hand showing 3.
+9: One hand showing 5 + the other hand showing 4.
+10: Both hands showing 5 (two open palms).
+Zero (Reset):
+
+To clear any ongoing calculation or the displayed sum, show zero fingers (a closed fist) with any hand that is detected, or simply remove all your hands from the camera's view.
+3. Input Methods for Addition
+The program supports two flexible ways to input your numbers for addition:
+
+Method 1: Sequential Input (One Hand / Changing Hands)
+This is ideal for users who prefer to show one number at a time.
+
+Show the First Number:
+
+Clearly show your first number (1-10) using one or two hands.
+Hold this gesture steady for approximately 1 second. The program will display "Holding X for X.Xs..." to indicate it's recognizing your input.
+Once the 1-second stabilization is complete, the program will lock in the First: X and tell you to wait.
+Wait for the Delay:
+
+After the first number is locked, the program will require a 2-second delay before it's ready for the second number. You'll see a countdown like "(Wait X.Xs for new number)".
+During this delay, you can either keep your hands in the previous position or relax them, but make sure to not show a new, distinct number yet.
+Show the Second Number:
+
+After the 2-second delay, clearly show your second number (1-10). You can use:
+The same hand(s) by changing the number of extended fingers.
+A different combination of hands (e.g., if you used one hand for the first number, you can now use two hands for the second).
+As soon as a new, non-zero number is detected after the delay, it will be recognized as the second number.
+Sum Displayed: The program will then immediately display the Sum: X + Y = Z.
+
+Method 2: Simultaneous Input (Two Hands)
+This method is faster if you intend to use two hands for both numbers.
+
+Show First Number with One Hand:
+
+Start by showing your first number (1-5) on a single hand.
+Hold this gesture steady for approximately 1 second to let the program capture it as First: X.
+Immediately Show Second Number with the Other Hand:
+
+Without waiting for the 2-second sequential delay, bring up your second hand and show the appropriate number of fingers to represent your second input.
+The program will detect the presence of the second hand and its count, and it will be recognized as the second number.
+Sum Displayed: The sum will be calculated and displayed immediately.
+
+Important Note on Simultaneous Input: While the program has a 2-second delay for sequential input on the same set of hands, if you introduce a second hand with a value that creates a new total number (0-10) after the first number is registered, the system will often capture it quickly without enforcing the full 2-second delay, as it understands a new input method has been initiated.
+
+4. On-Screen Feedback
+The program provides real-time information:
+
+"Total Fingers: X": Displays the current total number of fingers detected across all hands (0-10). This is for your reference and troubleshooting.
+"Left: X" / "Right: X": Shows the individual finger count (0-5) for each detected hand, positioned near the hand.
+"Show 1-10 fingers to start sum": Initial prompt.
+"Holding X for X.Xs...": Indicates that the program is trying to stabilize your first number. Hold your hand(s) steady.
+"First: X": Confirms that the first number has been successfully captured.
+"(Wait X.Xs for new number)": Countdown for the 2-second delay before the second number can be accepted in sequential mode.
+"(Show 2nd num: 1-10)": Prompt to show the second number.
+"Sum: X + Y = Z": Displays the calculated addition result.
+"Show 0 fingers or remove hands to reset.": Reminder on how to clear the calculation.
+Reset Messages (e.g., "Timeout: No hands detected.", "Zero shown (clearing calculation).", "Reset if no new input..."): Inform you when and why the program is resetting.
+5. Tips for Best Performance
+Lighting: Ensure your hands are well-lit, preferably with even, diffused light. Avoid strong backlighting or shadows that obscure your fingers.
+Background: Use a plain, contrasting background behind your hands. Avoid cluttered backgrounds that can confuse the detection algorithm.
+Hand Position:
+Keep your hands within the webcam's view.
+Try to hold your hands relatively flat towards the camera.
+Ensure fingers are clearly extended and separated for accurate counting. Avoid fingers overlapping or being too close together.
+Keep your palm relatively open (not tightly clenched) when extending fingers.
+Movement: When setting a number, try to hold your hand(s) as still as possible for the required stabilization time. Rapid movements can cause flickering counts.
+Distance: Experiment with the distance of your hands from the webcam. Too close or too far can affect detection accuracy. A good starting point is about arm's length.
+Confidence: The program is set with a confidence level (0.7). If it's struggling, try to make your gestures more pronounced.
+Smoothing Buffer: The BUFFER_SIZE is set to 7 frames for smoothing. This helps prevent minor flickers from changing the count instantly.
+6. Troubleshooting
+"Not Responding Properly":
+Check your lighting and background.
+Ensure your fingers are clearly extended and separated.
+Are you holding your hands steady for the required 1 second for the first number?
+Are you waiting for the 2-second delay (if using sequential input) before showing the second number?
+If numbers are flickering rapidly, adjust your hand position or lighting.
+Program Freezes / Crashes:
+Ensure no other applications are using your webcam.
+Restart the program and try again.
+Check your webcam drivers.
+If the issue persists, your system might be struggling with the real-time processing; try closing other demanding applications.
+7. Exiting the Program
+Press the 'q' key on your keyboard to quit the application window.
